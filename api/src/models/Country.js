@@ -11,9 +11,9 @@ module.exports = (sequelize) => {
 // x Capital *
 // x Subregión
 // x Área
-// Población
+// x Población
 
-  sequelize.define('country', {
+  sequelize.define('Country', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     },
     flag:{
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     continent:{
       type: DataTypes.STRING,
@@ -41,11 +41,14 @@ module.exports = (sequelize) => {
     },
     area:{
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     population:{
       type: DataTypes.STRING,
       allowNull: true
     },
+  },
+  {
+    timestamps: false,
   });
 };

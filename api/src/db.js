@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
+  DB_USER, DB_PASSWORD, DB_HOST
 } = process.env;
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
@@ -39,10 +39,10 @@ const { Country, Activity } = sequelize.models;
 Country.belongsToMany(Activity, {through: 'Country_activity', timestamps: false});
 Activity.belongsToMany(Country, {through: 'Country_activity', timestamps: false});
 
-// try {
-// } catch (error) {
-//   console.log(error)
-// }
+try {
+} catch (error) {
+  console.log(error)
+}
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

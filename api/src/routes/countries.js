@@ -1,27 +1,20 @@
 const { Router } = require('express');
 const { getCountries, getCountryById, findCountries } = require('../controllers/Country.js');
 const router = Router();
-const { Country } = require('../db');
-
-// router.get('/:id', getCountryById)
+const { Country } = require("../db");
 
 router.get("/", async (req, res) => {
-    try {
-      const { name } = req.query;
-      if (name === undefined){
-       const allCountries =  await getCountries();
-        console.log(allCountries);
-       res.json(allCountries);
-        
-      } else {
-        const find = await findCountries(name);
-        res.json(find);
-      }
-    } catch (e) {
-      console.log(`error de ruta ${e}`);
-    }
+  try {
+    let { name } = req.query;
+    if (name) name = name.trim();
+    const count = await Country.count();
+    if (!count) await getCountries();
+    const find = await findCountries(name);
+    return res.json(find);
+  } catch (e) {
+    console.error(`Error ruta countrie ${e}`);
+  }
 });
-
 
 router.get("/:id", async (req, res) => {
     try {

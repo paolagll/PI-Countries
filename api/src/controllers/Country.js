@@ -29,8 +29,8 @@ const getCountries = async (req,res) => {
 
 
 const findCountries = async (name,res) => {
-  try {
-    // Defino las opciones de la query dado el name
+
+  // Defino las opciones de la query dado el name
     let options = {
       include: {
         model: Activity,
@@ -49,7 +49,7 @@ const findCountries = async (name,res) => {
 
     const countries = await Country.findAll(options);
 
-    // solicito solo la info que requiero y la retorno
+  // solicito solo la info que requiero y la retorno
 
     const formattedCountries = countries.map(c => ({
       id: c.id,
@@ -60,10 +60,6 @@ const findCountries = async (name,res) => {
       activities: c.activities
     }));
     return formattedCountries;
-
-  } catch (error) {
-   console.log(`error controller ${error}`);
-  }
 };
 
 const getCountryById = async (id,res) => {

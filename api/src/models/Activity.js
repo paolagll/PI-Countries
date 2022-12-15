@@ -8,11 +8,11 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('Activity', {
-        id:{
-            type: DataTypes.UUID,
-            allownull: false,
-            primaryKey: true
-        },
+        // id:{
+        //     type: DataTypes.UUID,
+        //     allownull: false,
+        //     primaryKey: true
+        // },
         name: {
             type: DataTypes.STRING,
             allowNull: false,

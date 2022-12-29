@@ -1,5 +1,5 @@
 const initialState = {
-    allCountries : []
+    countries : []
 }
 
 function rootReducer(state = initialState, action){
@@ -7,10 +7,10 @@ function rootReducer(state = initialState, action){
         case 'GET_COUNTRIES':
          return {
             ...state,
-            allCountries: action.payload,
             countries: action.payload,
             loaded: false,
-        };
+        }
+        default: return state;
     }
 };
 

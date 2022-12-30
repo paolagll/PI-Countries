@@ -4,11 +4,24 @@ import {useDispatch, useSelector} from 'react-redux';
 import { getCountries } from "../actions";
 import { Link } from 'react-router-dom';
 import CountryCard from './Card';
+import Paginado from "./Paginado";
 
 export default function Home (){
     const dispatch = useDispatch()
     const allCountries = useSelector ((state) => state.countries)
 
+
+    const [currentPage, setCurrentPage] = useState (1)
+    const [countriesPerPage, setCountriesPerPage] = useState (10)
+    const indexOfLastCountry = currentPage * countriesPerPage
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage //
+    const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
+
+    const paginado = (pageNumber) => {
+        setCurrentPage (pageNumber)
+    }
+
+    //Traigo los countries al montar
     useEffect (()=>{
         dispatch(getCountries());
     }, [dispatch])
@@ -17,11 +30,12 @@ export default function Home (){
         e.preventDefault();
         dispatch(getCountries());
     }
+    
 
     return (
         <div>
-            <Link to = '/countries'>Countries</Link>
-            <h1>The countries of world</h1>
+            <Link to = '/home'>Countries</Link>
+            <h1>The countries of the world</h1>
             <button onClick={e=> {handleClick(e)}}>
                 Load all countries
             </button>
@@ -49,25 +63,26 @@ export default function Home (){
                 <select>
                     <option value="ACTIVITY">Activity</option>
                 </select>
-                {/* {
-                    allCountries.length > 0? allCountries.map((c) => (
-                        <CountryCard
-                        name={c.name}
-                        flag={c.flag}
-                        continent={c.continent}/>
-                    )
-                } */}
                 <div className='CardsCountries'>
-        {
-         allCountries.length > 0 ? allCountries.map((c) => (<CountryCard 
-            flag={c.flag}
-            name={c.name}
-            continent={c.continent}
-            key = {c.id}
-            />))
-        : <p>Loading...</p>
-        }
-        </div>
+                {
+                currentCountries.length > 0 ? currentCountries.map((c) => {
+                    return (
+                    <CountryCard 
+                flag={c.flag}
+                name={c.name}
+                continent={c.continent}
+                key = {c.id}
+                />)})
+                : <p>Loading...</p>
+                }
+                </div>
+                
+                <Paginado 
+                countriesPerPage={countriesPerPage}
+                allCountries={allCountries?.length}
+                paginado ={paginado}
+                 />
+
             </div>
         </div>
     )

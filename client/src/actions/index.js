@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+
+//Get Countries
 export function getCountries(){
     return async function(dispatch){
         let countries = await axios.get ('http://localhost:3001/countries');
@@ -9,3 +11,12 @@ export function getCountries(){
         })
     }
 }
+
+// Page
+export const paging = (payload) => {
+    return {
+      type: 'SET_CURRENT_PAGE',
+      payload,
+    };
+  };
+  

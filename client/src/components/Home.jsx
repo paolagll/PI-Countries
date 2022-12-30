@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import { getCountries } from "../actions";
-import { Link } from 'react';
-import {CountryCard} from './Card';
+import { Link } from 'react-router-dom';
+import CountryCard from './Card';
 
 export default function Home (){
     const dispatch = useDispatch()
@@ -49,14 +49,25 @@ export default function Home (){
                 <select>
                     <option value="ACTIVITY">Activity</option>
                 </select>
-                {
-                    allCountries?.map(c =>{
+                {/* {
+                    allCountries.length > 0? allCountries.map((c) => (
                         <CountryCard
                         name={c.name}
                         flag={c.flag}
                         continent={c.continent}/>
-                    })
-                }
+                    )
+                } */}
+                <div className='CardsCountries'>
+        {
+         allCountries.length > 0 ? allCountries.map((c) => (<CountryCard 
+            flag={c.flag}
+            name={c.name}
+            continent={c.continent}
+            key = {c.id}
+            />))
+        : <p>Loading...</p>
+        }
+        </div>
             </div>
         </div>
     )

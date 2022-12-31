@@ -19,4 +19,11 @@ export const paging = (payload) => {
       payload,
     };
   };
+
+export function filterCountriesByContinent(payload){
+   return{
+        type : 'FILTER_BY_CONTINENT',
+        payload
+   } 
+}
   

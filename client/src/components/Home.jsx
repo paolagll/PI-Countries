@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import { getCountries } from "../actions";
+import { getCountries, filterCountriesByContinent } from "../actions";
 import { Link } from 'react-router-dom';
 import CountryCard from './Card';
 import Paginado from "./Paginado";
@@ -11,10 +11,10 @@ export default function Home (){
     const allCountries = useSelector ((state) => state.countries)
 
 
-    const [currentPage, setCurrentPage] = useState (1)
-    const [countriesPerPage, setCountriesPerPage] = useState (10)
+    const [currentPage, setCurrentPage] = useState (1)  //declaro la pagina actual
+    const [countriesPerPage, setCountriesPerPage] = useState (10) //
     const indexOfLastCountry = currentPage * countriesPerPage
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage //
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
 
     const paginado = (pageNumber) => {
@@ -31,6 +31,9 @@ export default function Home (){
         dispatch(getCountries());
     }
     
+    function handleFilterContinent(e){
+        dispatch(filterCountriesByContinent(e.target.value))
+    }
 
     return (
         <div>
@@ -52,12 +55,15 @@ export default function Home (){
                     <option value="LOWER">High → Low</option>
                 </select>
                 {/* filter by continent */}
-                <select>
+                <select onChange ={e => handleFilterContinent(e)}>
                     <option value="All">All</option>
-                    <option value="AMERICA">America</option>
-                    <option value="ASIA">Asia</option>
-                    <option value="EUROPE">Europe</option>
-                    <option value="AFRICA">Africa</option>
+                    <option value="America">America</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Antartica">Antartica</option>
+                    <option value="South America">South America</option>
+                    <option value="North America">North America</option>
+                    <option value="Oceania">Oceania</option>
                 </select>
                 {/* filter by activity */}
                 <select>

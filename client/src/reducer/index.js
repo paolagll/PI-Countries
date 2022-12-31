@@ -25,6 +25,13 @@ function rootReducer(state = initialState, action){
                 // firstPostIndex: (postPerPage* (action.payload-1)),
                 // lastPostindex: postPerPage*action.payload,
                 page: action.payload
+            }
+        case 'FILTER_BY_CONTINENT':
+            const allCountries = state.countries
+            const continentFiltered = action.payload === 'ALL' ? allCountries:allCountries.filter(e => e.status === action.payload)
+            return{
+               ...state,
+                countries : continentFiltered 
             };
 
         default: return state;

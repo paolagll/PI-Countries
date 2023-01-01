@@ -27,4 +27,19 @@ export function filterCountriesByContinent(payload){
         payload,
    };
 };
-  
+
+//Order by Name
+export function orderByNmae(payload){
+  return{
+       type :'ORDER_BY_NAME',
+       payload,
+  };
+};
+
+//Filter Activity
+export function filterByActivity(payload){
+  return{
+    type:'FILTER_BY_ACTIVITY',
+    payload,
+  }
+}

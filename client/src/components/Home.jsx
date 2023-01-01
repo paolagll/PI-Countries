@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import { getCountries, filterCountriesByContinent } from "../actions";
+import { getCountries, filterCountriesByContinent, orderByNmae } from "../actions";
 import { Link } from 'react-router-dom';
 import CountryCard from './Card';
 import Paginado from "./Paginado";
@@ -19,6 +19,9 @@ export default function Home (){
     const indexOfFirstCountry = currentPage === 1 ? 0 : indexOfLastCountry - countriesPerPage;
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
 
+    //state for order
+    const [order, setOrder] = useState("");
+
     const paginado = (pageNumber) => {
         setCurrentPage (pageNumber)
     }
@@ -28,6 +31,8 @@ export default function Home (){
         dispatch(getCountries());
     }, [dispatch])
 
+    //------------ Handlers ---------------//
+    //reset all countries
     function handleClick(e){
         e.preventDefault();
         dispatch(getCountries());
@@ -39,6 +44,14 @@ export default function Home (){
         setCurrentPage(1);
     }
 
+    //Order
+    function handleOrder(e){
+        e.preventDefault();
+        dispatch(orderByNmae(e.target.value));
+        setCurrentPage(1);
+        setOrder(`Sort ${e.target.value}`); // mododifica el estado local y se renderiza
+    }
+
     return (
         <div >
             <Link to = '/home'>Countries</Link>
@@ -48,13 +61,13 @@ export default function Home (){
             </button>
             <div className=''>
                 {/* order alphabetic */}
-                <select>
+                <select onChange={e => handleOrder(e)}>
                     <option value="A → Z">A → Z</option>
                     <option value="Z → A">Z → A</option>
                 </select>
                 {/* order for population*/}
-                <select>
-                    <option value="All">None</option>
+                <select >
+                    <option value="All">Population</option>
                     <option value="HIGHER">Low → High</option>
                     <option value="LOWER">High → Low</option>
                 </select>

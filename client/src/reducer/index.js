@@ -31,6 +31,21 @@ function rootReducer(state = initialState, action){
                 countries : continentFiltered,
                 loaded: false,
             }
+        case 'ORDER_BY_NAME':
+            let orderedByName = action.payload === "A → Z" ? state.countries.sort(function(a, b){
+                if (a.name > b.name) { return 1;}
+                if (b.name > a.name) {return -1;}
+                return 0;
+            }):
+            state.countries.sort(function(a, b){
+                if (a.name > b.name) {return -1;}
+                if (b.name > a.name) {return 1;}
+                return 0;
+            })
+            return{
+                ...state,
+                countries: orderedByName,
+            }
 
         default: return state;
     }

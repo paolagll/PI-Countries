@@ -10,7 +10,7 @@ export function getCountries(){
             payload: countries.data,
         })
     }
-}
+};
 
 // Page
 export const paging = (payload) => {
@@ -20,10 +20,11 @@ export const paging = (payload) => {
     };
   };
 
+// Filter Continent
 export function filterCountriesByContinent(payload){
    return{
-        type : 'FILTER_BY_CONTINENT',
-        payload
-   } 
-}
+        type :'FILTER_BY_CONTINENT',
+        payload,
+   };
+};
   

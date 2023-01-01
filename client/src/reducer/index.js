@@ -1,11 +1,7 @@
 const initialState = {
     countries : [],
-    firstPostIndex: 0,
-    lastPostindex: 9,
-    previousPage: 0,
-    nextPage: 0,
-    currentPage: 1,
-    pages: 0
+    countriesList:[],
+    detail:[]
 }
 
 function rootReducer(state = initialState, action){
@@ -14,6 +10,7 @@ function rootReducer(state = initialState, action){
          return {
             ...state,
             countries: action.payload,
+            countriesList: action.payload,
             loaded: false,
         }
         case 'SET_CURRENT_PAGE':
@@ -27,12 +24,13 @@ function rootReducer(state = initialState, action){
                 page: action.payload
             }
         case 'FILTER_BY_CONTINENT':
-            const allCountries = state.countries
-            const continentFiltered = action.payload === 'ALL' ? allCountries:allCountries.filter(e => e.status === action.payload)
+            const allCountries = state.countriesList
+            const continentFiltered = action.payload === 'All' ? allCountries:allCountries.filter(e => e.continent === action.payload)
             return{
                ...state,
-                countries : continentFiltered 
-            };
+                countries : continentFiltered,
+                loaded: false,
+            }
 
         default: return state;
     }

@@ -12,7 +12,7 @@ function rootReducer(state = initialState, action){
             countries: action.payload,
             countriesList: action.payload,
             loaded: false,
-        }
+        };
         case 'SET_CURRENT_PAGE':
             return {
                 ...state,
@@ -22,17 +22,16 @@ function rootReducer(state = initialState, action){
                 // firstPostIndex: (postPerPage* (action.payload-1)),
                 // lastPostindex: postPerPage*action.payload,
                 page: action.payload
-            }
+            };
         case 'FILTER_BY_CONTINENT':
             const allCountries = state.countriesList
             const continentFiltered = action.payload === 'All' ? allCountries:allCountries.filter(e => e.continent === action.payload)
             return{
                ...state,
                 countries : continentFiltered,
-                loaded: false,
-            }
+            };
         case 'ORDER_BY_NAME':
-            let orderedByName = action.payload === "A → Z" ? state.countries.sort(function(a, b){
+            action.payload === "A → Z" ? state.countries.sort(function(a, b){
                 if (a.name > b.name) { return 1;}
                 if (b.name > a.name) {return -1;}
                 return 0;
@@ -44,8 +43,15 @@ function rootReducer(state = initialState, action){
             })
             return{
                 ...state,
-                countries: orderedByName,
-            }
+            };
+        case 'ORDER_BY_POPULATION':
+            action.payload === "HIGHER"? 
+              state.countries.sort((a, b) => a.population - b.population):
+              state.countries.sort((a, b) => b.population - a.population);
+            return {
+              ...state,
+            };
+            
 
         default: return state;
     }

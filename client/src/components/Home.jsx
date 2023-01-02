@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import { getCountries, filterCountriesByContinent, orderByNmae } from "../actions";
+import { getCountries, filterCountriesByContinent, orderByName,  orderByPopulation} from "../actions";
 import { Link } from 'react-router-dom';
 import CountryCard from './Card';
 import Paginado from "./Paginado";
@@ -18,13 +18,11 @@ export default function Home (){
     const indexOfLastCountry = currentPage === 1 ? 9 : currentPage * countriesPerPage-1;
     const indexOfFirstCountry = currentPage === 1 ? 0 : indexOfLastCountry - countriesPerPage;
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
+    const paginado = (pageNumber) => {setCurrentPage (pageNumber)};
 
     //state for order
-    const [order, setOrder] = useState("");
-
-    const paginado = (pageNumber) => {
-        setCurrentPage (pageNumber)
-    }
+    const [order, setOrder] = useState('');
+    const [orderP, setOrderPopulation] = useState('');
 
     //Traigo los countries al montar
     useEffect (()=>{
@@ -36,38 +34,60 @@ export default function Home (){
     function handleClick(e){
         e.preventDefault();
         dispatch(getCountries());
+        setOrder("");
+        setOrderPopulation("");
     }
 
-     //Filters
+     //Filter Continent
     function handleFilterContinent(e){
         dispatch(filterCountriesByContinent(e.target.value));
         setCurrentPage(1);
     }
 
-    //Order
+    //Order by Name
     function handleOrder(e){
         e.preventDefault();
-        dispatch(orderByNmae(e.target.value));
+        dispatch(orderByName(e.target.value));
         setCurrentPage(1);
         setOrder(`Sort ${e.target.value}`); // mododifica el estado local y se renderiza
     }
+
+    //Order by Population
+    function handleOrderPopulation(e){
+        e.preventDefault();
+        dispatch(orderByPopulation(e.target.value));
+        setCurrentPage(1);
+        setOrderPopulation(`Order ${e.target.value}`);
+    }
+    
 
     return (
         <div >
             <Link to = '/home'>Countries</Link>
             <h1>The countries of the world</h1>
             <button onClick={e=> {handleClick(e)}}>
-                Load all countries
+                Reset
             </button>
             <div className=''>
                 {/* order alphabetic */}
+                {/* <button onClick={e => handleOrder(e)}>
+                    <option value="A → Z">A → Z</option> </button>
+                <button onClick={e => handleOrder(e)}>
+                    <option value="Z → A">Z → A</option>
+                </button> */}
                 <select onChange={e => handleOrder(e)}>
+                    <option value="default" disabled>Alphabetic order</option>
                     <option value="A → Z">A → Z</option>
                     <option value="Z → A">Z → A</option>
                 </select>
                 {/* order for population*/}
-                <select >
-                    <option value="All">Population</option>
+                {/* <button onClick={e => handleOrderPopulation(e)}>
+                    <option value="HIGHER">Low → High</option> </button>
+                <button onClick={e => handleOrderPopulation(e)}>
+                    <option value="LOWER">High → Low</option>
+                </button> */}
+                <select onChange={e => handleOrderPopulation(e)} >
+                    <option value="default" disabled>Population</option>
                     <option value="HIGHER">Low → High</option>
                     <option value="LOWER">High → Low</option>
                 </select>

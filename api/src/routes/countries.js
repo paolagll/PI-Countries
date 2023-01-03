@@ -12,14 +12,14 @@ router.get("/", async (req, res) => {
     const find = await findCountries(name);
     return res.json(find);
   } catch (e) {
-    console.error(`Error ruta countrie ${e}`);
+    console.error(`Error ruta countries ${e}`);
   }
 });
 
 router.get("/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      // once the DB has all API data, execute getCountryById
+      // cuando cargo la db, ejecuto getCountryById
       res.json(await getCountryById(id.toUpperCase()));
     } catch (e) {
       // console.error(e.message)

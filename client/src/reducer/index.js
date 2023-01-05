@@ -1,8 +1,16 @@
 const initialState = {
     countries : [],
     countriesList:[],
-    detail:[]
+    details:[],
+    page: 1,
+    currentPage: 1,
+    firstPostIndex: 0,
+    lastPostIndex: 10,
+    loaded:false,
+    Activities: [],
+    myActivities:[]
 }
+const countriesPerPage = 10;
 
 function rootReducer(state = initialState, action){
     switch(action.type){
@@ -10,18 +18,26 @@ function rootReducer(state = initialState, action){
          return {
             ...state,
             countries: action.payload,
+            page:Math.ceil(action.payload.length/countriesPerPage),
             countriesList: action.payload,
             loaded: false,
         };
+        case 'GET_NAME_COUNTRIES':
+            return{
+                ...state,
+                loaded:true,
+                countries: action.payload,
+                page:Math.ceil(action.payload.length/countriesPerPage),
+                currentPage: 1,
+            }
         case 'SET_CURRENT_PAGE':
             return {
                 ...state,
-                // currentPage: action.payload,
-                // previousPage: action.payload-1,
-                // nextPage: action.payload+1, 
-                // firstPostIndex: (postPerPage* (action.payload-1)),
-                // lastPostindex: postPerPage*action.payload,
-                page: action.payload
+                currentPage: action.payload,
+                previousPage: action.payload-1,
+                nextPage: action.payload+1, 
+                firstPostIndex: countriesPerPage * (action.payload - 1),
+                lastPostIndex: countriesPerPage * action.payload,
             };
         case 'FILTER_BY_CONTINENT':
             const allCountries = state.countriesList
@@ -29,30 +45,66 @@ function rootReducer(state = initialState, action){
             return{
                ...state,
                 countries : continentFiltered,
+                page:Math.ceil(continentFiltered.length / countriesPerPage),
+                currentPage: 1,
+            };
+        case 'FILTER_BY_ACTIVITY':
+            const allCountry = state.countriesList
+            const activitiesFiltered = action.payload === 'default' ? allCountry: allCountry.filter(e => e.Activities && e.Activities.some(a=> a.name === action.payload))
+            return{
+               ...state,
+                countries: activitiesFiltered,
+                page:Math.ceil(activitiesFiltered.length / countriesPerPage),
+                currentPage: 1,
             };
         case 'ORDER_BY_NAME':
-            action.payload === "A → Z" ? state.countries.sort(function(a, b){
+            let countriesName = [...state.countries]
+            let orName = []
+
+            if(action.payload === "A → Z" ){
+            orName = countriesName.sort(function(a, b){
                 if (a.name > b.name) { return 1;}
                 if (b.name > a.name) {return -1;}
                 return 0;
-            }):
-            state.countries.sort(function(a, b){
+            })}
+            if(action.payload === "Z → A" ){
+                orName =countriesName.sort(function(a, b){
                 if (a.name > b.name) {return -1;}
                 if (b.name > a.name) {return 1;}
                 return 0;
-            })
+            })}
+            return{
+                ...state,
+                countries: orName,
+                page:Math.ceil(orName.length / countriesPerPage),
+                currentPage: 1,
+            };
+        case 'ORDER_BY_POPULATION':
+            let countriesPop =  [...state.countries]
+            action.payload === "HIGHER"? 
+              countriesPop.sort((a, b) => a.population - b.population):
+              countriesPop.sort((a, b) => b.population - a.population);
+            return {
+              ...state,
+              countries:countriesPop,
+              page:Math.ceil(countriesPop.length / countriesPerPage),
+              currentPage: 1,
+            };
+        case "GET_DETAILS":
+            return{
+                ...state,
+                details: action.payload
+            };
+        case 'GET_ACTIVITIES':
+            return {
+                ...state,
+                Activities: action.payload
+            };
+        case 'POST_ACTIVITY':
             return{
                 ...state,
             };
-        case 'ORDER_BY_POPULATION':
-            action.payload === "HIGHER"? 
-              state.countries.sort((a, b) => a.population - b.population):
-              state.countries.sort((a, b) => b.population - a.population);
-            return {
-              ...state,
-            };
-            
-
+         
         default: return state;
     }
 };

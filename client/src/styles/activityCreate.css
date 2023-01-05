@@ -1,0 +1,24 @@
+.countryDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    grid-gap: 10px;
+    margin: 10px 0;
+}
+
+.closeButton{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.countryName{
+    margin:0;
+}
+
+.displayCountries{
+    display: flex;
+    flex-direction: column;
+}

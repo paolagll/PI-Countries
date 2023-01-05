@@ -12,8 +12,59 @@ export function getCountries(){
     }
 };
 
+//Get name Countries
+export function getNameCountries(name){
+  return async function(dispatch){
+    try {
+      var json= await axios.get('http://localhost:3001/countries?name='+ name);
+      return dispatch({
+        type:'GET_NAME_COUNTRIES',
+        payload: json.data,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  } 
+}
+
+//Get Country Detail
+export function getDetail(id){
+  return async function(dispatch){
+      try{
+          var detail = await axios.get(`http://localhost:3001/countries/${id}`)
+          return dispatch({
+              type: "GET_DETAILS",
+              payload: detail.data,
+          })
+      } catch(error) {
+          console.log(error)
+      }
+  }
+}
+
+//Get activities
+export function getActivities(){
+  return async (dispatch) => {
+      var json = await axios.get(`http://localhost:3001/activities`)
+     return dispatch({ 
+      type: 'GET_ACTIVITIES',
+      payload: json.data})}
+}
+
+//Create Activity
+export function postActivities(payload){
+  return async function(dispatch){
+    let json = await axios.post(`http://localhost:3001/activities`, payload);
+    console.log(payload)
+    return dispatch ({
+      type: 'POST_ACTIVITY',
+      payload: json,
+    })
+  }
+} 
+
 // Page
-export const paging = (payload) => {
+export const actualPage = (payload) => {
     return {
       type: 'SET_CURRENT_PAGE',
       payload,
@@ -51,3 +102,6 @@ export function filterByActivity(payload){
     payload,
   }
 }
+
+
+

@@ -1,0 +1,29 @@
+.button {
+    color: rgba(196, 100, 17, 0.785);
+    border: 1px solid #f8f8f8;
+    background-color: #ffffff;
+    text-transform: uppercase;
+    font-family: "Helvetica", sans-serif;
+    border-radius: 50px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .button-principal {
+    border: 1px solid #f7f7f7;
+    padding: 8px;
+    font-size: 19px;
+    background-color: burlywood;
+    color: #f8f8f8;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Helvetica", sans-serif;
+    border-radius: 25px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .button-false {
+    display: none;
+  }
+  

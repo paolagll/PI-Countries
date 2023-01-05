@@ -1,0 +1,13 @@
+.back{
+    display: flex;
+    justify-content: flex-start;
+    justify-items: stretch;
+    margin: 10px;
+}
+
+.details{
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+}
+

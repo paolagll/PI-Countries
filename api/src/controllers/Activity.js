@@ -43,24 +43,39 @@ const getActivityById = async (id) => {
 const addActivity = async (content) => {
   try {
     const { name, difficulty, duration, season, countries } = content;
-    // Create new activity
     const newActivity = await Activity.create({
       name,
       difficulty,
       duration,
-      season,
-      countries,
+      season
     });
-    //   Link activity to its countries
-    await newActivity.addCountry(countries);
+    const searchCountry = []
+    //almaceno el pais q me pasan por param
+    for (let i = 0; i < countries.length; i++) {
+      let search = await Country.findOne({
+        where: {
+          name: {
+            [Op.iLike]: `%${countries[i]}%`
+          }
+        }
+      })
+      searchCountry.push(search)
+    }
+    for (let e of searchCountry) {
+      await newActivity.addCountry(e);
+    }
+    const returnCountry = await Activity.findByPk(newActivity.id, {
+      include: [{
+        model: Country,
+        through: {
+          attributes: []
+        }
+      }],
+    }).then(results => results.toJSON())
+    return returnCountry
 
-    console.log(`Activity successfully added to database`);
-    return await Activity.findByPk(newActivity.id, {
-      include: { model: Country, attributes: ["id"] },
-    });
-  } catch (e) {
-    // Error msg in case data insertion failed
-    console.log(`Error al crear${e}`);
+  } catch (error) {
+    console.error(`La actividad no se pudo agregar a la base de datos (addActivity), ${content}`);
   }
 };
 

@@ -33,9 +33,10 @@ router.get("/:id", async (req, res) => {
 });
  
 router.post("/", async (req, res) => {
-    console.log(req.body);
+    
     try {
-      //const { name, difficulty, duration, season } = req.body;
+      const { name, difficulty, duration, season } = req.body;
+      console.log(name, difficulty, duration, season );
       const newActivity = await addActivity(req.body);
       res.status(201).send(newActivity);
     } catch (e) {

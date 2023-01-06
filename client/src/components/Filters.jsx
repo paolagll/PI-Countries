@@ -66,18 +66,18 @@ export default function Filter(){
         
         <div className="filters">
              {/* order */}
-             <select onChange={e => handleOrder(e)}>
+             <select defaultValue={'default'} onChange={e => handleOrder(e)}>
                     <option value="default" disabled>Alphabetic order</option>
                     <option value="A → Z">A → Z</option>
                     <option value="Z → A">Z → A</option>
                 </select>
-                <select onChange={e => handleOrderPopulation(e)} >
+                <select defaultValue={'default'} onChange={e => handleOrderPopulation(e)} >
                     <option value="default" disabled>Population</option>
                     <option value="HIGHER">Low → High</option>
                     <option value="LOWER">High → Low</option>
                 </select>
                 {/* filter by continent */}
-                <select onChange={e => handleFilterContinent(e)}>
+                <select defaultValue={'All'} onChange={e => handleFilterContinent(e)}>
                     <option value="All">All</option>
                     <option value="Asia">Asia</option>
                     <option value="Europe">Europe</option>

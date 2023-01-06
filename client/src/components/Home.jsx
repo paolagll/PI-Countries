@@ -40,8 +40,9 @@ export default function Home (){
 
     return (
         <div >
-            <Link to = '/home'>Countries</Link>
+            
             <h1>The countries of the world</h1>
+            <Link to = '/home'>Countries</Link>
             <button onClick={e=> {handleClick(e)}}>
                 Reset
             </button>

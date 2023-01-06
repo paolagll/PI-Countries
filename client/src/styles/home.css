@@ -1,3 +1,14 @@
+h1{
+  background: #6f8b2963;
+  height: 100px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: cursive;
+  font-optical-sizing: auto;
+  margin: 0;
+}
 
 .cardsCountries {
     display: flex;

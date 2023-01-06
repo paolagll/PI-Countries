@@ -39,9 +39,9 @@ export default function Home (){
     }
 
     return (
-        <div >
+        <div className="containhome">
             
-            <h1>The countries of the world</h1>
+            <h1 className="title">The countries of the world</h1>
             <Link to = '/home'>Countries</Link>
             <button onClick={e=> {handleClick(e)}}>
                 Reset

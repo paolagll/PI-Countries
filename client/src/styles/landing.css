@@ -1,0 +1,14 @@
+h1{
+    background-color: none;
+}
+body {
+    background-image: url('../images/Mapa.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    ;
+}
+
+.landing{
+    display: flex;
+    flex-direction: column;
+}

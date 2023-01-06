@@ -1,5 +1,4 @@
-h1{
-  background: #6f8b2963;
+.title{
   height: 100px;
   flex-direction: column;
   display: flex;
@@ -8,6 +7,7 @@ h1{
   font-family: cursive;
   font-optical-sizing: auto;
   margin: 0;
+  background-color: #d68d4d;
 }
 
 .cardsCountries {
@@ -37,5 +37,15 @@ h1{
       width: 50%;
     }
 }
-  
-  
+
+.containhome{
+  background-color: #F2CB9B;
+}
+/*   
+paleta de colores{
+  #F2CB9B
+#BF7B3F
+#8C4820
+#693110
+#641400
+} */

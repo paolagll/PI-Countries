@@ -6,13 +6,13 @@ import '../styles/landing.css'
 export default function LandingPage(){
     return(
         <div className='landing'>
-            <h1>Welcome!</h1>
+            <h1 className="welcome">Welcome!</h1>
+            <h2 className="introduction">In this page you'll begin your travel around the world.</h2>
             <Link to = '/home'>
-                <button>Let's Go!</button>
+                <button className="buttonLanding">Let's Go!</button>
             </Link>
-            <div>
-                <img></img>
-            </div>
+            
+            
         </div>
     );
 }

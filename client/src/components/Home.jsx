@@ -9,6 +9,7 @@ import SearchBar from "./SearchBar";
 import Pagination from "./Paginado";
 import Detail from "./Detail";
 import Filter from "./Filters";
+import logo from '../images/globo.PNG'
 
 
 
@@ -40,16 +41,18 @@ export default function Home (){
 
     return (
         <div className="containhome">
-            
+            <div className="navbar">
+            <Link to = '/' className="logo" >
+                <img src={logo} alt = 'logo' className="globo"/>
+            </Link>
             <h1 className="title">The countries of the world</h1>
-            <Link to = '/home'>Countries</Link>
+            <SearchBar/>
+            </div>
             <button onClick={e=> {handleClick(e)}}>
                 Reset
             </button>
             <div className=''>
-                
                 <Filter/>
-                <SearchBar/>
                 <Link to= '/activities'>
                 <button  className="buttons-home">Create Activity</button> 
                 </Link>

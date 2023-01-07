@@ -1,5 +1,4 @@
 .title{
-  height: 100px;
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -7,43 +6,65 @@
   font-family: cursive;
   font-optical-sizing: auto;
   margin: 0;
-  background-color: #d68d4d;
+}
+.navbar{
+  display: flex;
+  background-color: #d68d4d82;
+  align-items: center;
+  justify-content: space-between;
+  height: 12vh;
+}
+
+.logo{
+  height: 80%;
+  display: flex;
+  position: relative;
+  left: 12px;
+}
+
+.globo{
+  display: flex;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .cardsCountries {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .card{
-    background: rgba( 255, 255, 255, 0.3 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 2.5px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    margin: 2.5vh 1.45vw;
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  margin: 2.5vh 1.45vw;
+  width: 320px;
+  height: 320px;
+}
+  
+/* @media (min-width: 700px) {
+  .container {
+    flex-direction: row;
+  }
 }
   
 @media (min-width: 700px) {
-    .container {
-      flex-direction: row;
-    }
-}
-  
-@media (min-width: 700px) {
-    .item {
-      width: 50%;
-    }
-}
+  .item {
+    width: 50%;
+  }
+} */
 
 .containhome{
   background-color: #F2CB9B;
 }
 /*   
 paleta de colores{
-  #F2CB9B
+#F2CB9B
 #BF7B3F
 #8C4820
 #693110

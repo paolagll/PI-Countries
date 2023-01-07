@@ -2,9 +2,8 @@
 
 .flag{
   margin-top: 15px;
-  height: 60%;
-  width: 80%;
   object-fit: cover;
   border-bottom: 1px solid #fff4;
-  
+  width: 290px;
+  max-height: 200px ;
 }

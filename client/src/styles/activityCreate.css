@@ -96,3 +96,10 @@
     height: 25px;
     text-align: center;
 }
+
+.back_{
+    position: relative;
+    top: 10px;
+    display: inline-block;
+    right: 451px;
+}

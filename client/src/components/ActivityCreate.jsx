@@ -117,7 +117,7 @@ export default function ActivityCreate(){
     return (
         <div className="cont_act">
             <div className="container-create">
-                <Link to = '/home'><button className="back">Back</button></Link>
+                <Link to = '/home' className="back_"><button className="back">Back</button></Link>
                 <h1 className="titulo">Create your activity!</h1>
                 <div className="container_form">            
                 <form className="form" onSubmit={e=>handleSubmit(e)}>

@@ -15,8 +15,10 @@
     color: #646464;
     padding: 0.7rem 1rem;
     border-radius: 30px;
-    width: 12em;
+    width: 14em;
     transition: all ease-in-out .5s;
+    position: relative;
+    left: 36px;
 }
 
 .search__input::placeholder{

@@ -1,24 +1,98 @@
-.countryDiv{
+.cont_act{
+    background-color: #F2CB9B;
+    width: 100vw;
+    height: 100vh;
+}
+
+.input{
+    font-size: 18px;
+    /* color: #641400; */
+}
+
+.back{
+    background-color:#ebceaa;
+    border-radius:10px;
+    display:inline-block;
+    cursor:pointer;
+    color:#8c4820;
+    font-family:Arial;
+    font-size:14px;
+    padding:4px 12px;
+    text-decoration:none;
+    border: solid #693110 1px;
     display: flex;
-    flex-direction: row;
+  }
+  .back:hover {
+    background-color:#8c4820;
+    color: white;
+  }
+  .back:active {
+    position:relative;
+    top:1px;
+}
+
+.container-create{
+    background-color: #F2CB9B;
+}
+
+.container_form{
+    display: flex;
     justify-content: center;
-    grid-gap: 10px;
-    margin: 10px 0;
 }
-
-.closeButton{
-    width: 20px;
-    height: 20px;
-    position: relative;
+.form{
+    background: rgba( 255, 255, 255, 0.3 );
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+    -webkit-backdrop-filter: blur( 2.5px );
+    backdrop-filter: blur( 2.5px );
+    border-radius: 20px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    margin: 2.5vh 1.45vw;
+    min-width: auto;
+    min-height: auto;
     display: flex;
-    justify-content: center;
-}
-
-.countryName{
-    margin:0;
-}
-
-.displayCountries{
-    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     flex-direction: column;
+    align-content: center;
+}
+
+.select_form{
+    margin: 15px 8px;
+}    .select_form select {
+        display: flex;
+        width: 100%;
+        cursor: pointer;
+        padding: 8px 25px;
+        outline: 0;
+        border: 0px dashed #000000;
+        border-radius: 24px;
+        background: #F2CB9B;
+        color: #641400;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        font-size: 18px;
+    }
+        .select_form select::-ms-expand {
+            display: none;
+        }
+        .select_form select:hover{
+            color: #fde5c8;
+            background: #f2cb9b;
+        }
+        .select_form select:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+.input_{
+    color: #641400;
+}
+
+.cajainput{
+    border: 0px dashed #000000;
+    border-radius: 24px;
+    margin: 10px;
+    height: 25px;
+    text-align: center;
 }

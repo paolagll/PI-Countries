@@ -115,25 +115,27 @@ export default function ActivityCreate(){
     };
 
     return (
-        <div>
+        <div className="cont_act">
             <div className="container-create">
                 <Link to = '/home'><button className="back">Back</button></Link>
                 <h1 className="titulo">Create your activity!</h1>
+                <div className="container_form">            
                 <form className="form" onSubmit={e=>handleSubmit(e)}>
-                    <div>
+                    <div className="input_">
                         <label>Activity:</label>
                         <input type="text"
                         value={input.name}
-                        name= "name"
+                        name='name'
+                        className="cajainput"
                         onChange={handleChange}
                         />
                         {errors.name&&(
                             <p className="warning">{errors.name}</p>
                         )}
                     </div>
-                    <div>
-                        <label>Diffilculty:</label>
-                        <select defaultValue={'default'} name="difficulty" onChange={e=> handleSelect(e)}>
+                    <div className="select_form">
+                        {/* <label>Diffilculty:</label> */}
+                        <select defaultValue={'default'} name='difficulty' onChange={e=> handleSelect(e)}>
                             <option value="default" disabled>Diffilculty</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -147,10 +149,11 @@ export default function ActivityCreate(){
                             <p className="warning">{errors.difficulty}</p>
                         )}
                     </div>
-                    <div>
+                    <div className="input_">
                         <label>Duration:</label>
                         <input type="number"
-                        name="duration"
+                        name='duration'
+                        className="cajainput"
                         value={input.duration}
                         onChange={handleChange}
                         />
@@ -158,8 +161,8 @@ export default function ActivityCreate(){
                             <p className="warning">{errors.duration}</p>
                         )}
                     </div>
-                    <div>
-                        <label>Season:</label>
+                    <div className="select_form">
+                        {/* <label>Season:</label> */}
                         <select defaultValue={'default'} name="season" onChange={e=>handleSelect(e)}>
                             <option value="default" disabled>Season</option>
                             <option value="summer">Summer</option>
@@ -172,7 +175,7 @@ export default function ActivityCreate(){
                         <p className="warning">{errors.season}</p>
                     )}
                     </div>
-                    <div>
+                    <div className="select_form">
                         <select defaultValue={'default'} name="NombrePais" onChange={e=>handleCountrySelect(e)}>
                             <option value="default" disabled>Select country</option>
                             {countries.map(c=>(
@@ -190,12 +193,14 @@ export default function ActivityCreate(){
                         <p className="countryName">{country}</p>
                         <button className="closeButton" onClick={e => { deleteCountry(e) }} value={country}>X</button>
                     </div>
-                  )
-                })}
-              </div>
+                    )
+                    })}
+                    </div>
                     <button className="boton" type="submit" disabled={!buttonEnabled}>Crear</button>
                 </form>
-            </div>
+                </div>  
+                </div>
+            
         </div>
     )
       

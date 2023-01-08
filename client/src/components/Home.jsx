@@ -42,20 +42,25 @@ export default function Home (){
     return (
         <div className="containhome">
             <div className="navbar">
-            <Link to = '/' className="logo" >
-                <img src={logo} alt = 'logo' className="globo"/>
-            </Link>
-            <h1 className="title">The countries of the world</h1>
-            <SearchBar/>
-            </div>
-            <button onClick={e=> {handleClick(e)}}>
-                Reset
-            </button>
-            <div className=''>
-                <Filter/>
-                <Link to= '/activities'>
-                <button  className="buttons-home">Create Activity</button> 
+                <Link to = '/' className="logo" >
+                 <img src={logo} alt = 'logo' className="globo"/>
                 </Link>
+                <h1 className="title">The countries of the world</h1>
+                <SearchBar/>
+            </div>
+           
+            <div className='container_country'>
+                
+                <div className="container_filters">
+                    <Filter/>
+                    <button className="reset" onClick={e=> {handleClick(e)}}>
+                        Reset
+                    </button>
+                    <Link to= '/activities' className="button_activity">
+                        <button  className="button_create">Create Activity</button> 
+                    </Link>
+                </div>
+                
                 <div key='cards' className='cardsCountries '>
                 {
                 currentCountries.length > 0 ? currentCountries.map((c) => {
@@ -72,10 +77,8 @@ export default function Home (){
                 : <p>Loading...</p>
                 }
                 </div>
-                
-                <Pagination/>
-
             </div>
+            <Pagination/>
         </div>
     )
 }

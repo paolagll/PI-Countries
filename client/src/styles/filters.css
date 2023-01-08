@@ -5,3 +5,56 @@
     margin: 10px;
     flex-wrap: wrap;
 }
+.select {
+    margin: 15px 8px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}    .select select {
+        display: flex;
+        width: 100%;
+        cursor: pointer;
+        padding: 10px 17px;
+        outline: 0;
+        border: 0px dashed #000000;
+        border-radius: 24px;
+        background: #F2CB9B;
+        color: #641400;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        font-size: 18px;
+    }
+        .select select::-ms-expand {
+            display: none;
+        }
+        .select select:hover,
+        .select select:focus {
+            color: #fde5c8;
+            background: #f2cb9b;
+        }
+        .select select:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+.select_arrow {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 6px;
+    height: 6px;
+    border: solid 693110;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+    border-color: #000000;
+}
+.select select:disabled ~ .select_arrow {
+    border-top-color: #cccccc;
+}

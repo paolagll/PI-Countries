@@ -22,7 +22,7 @@ export default function Detail() {
   return (
     console.log('dentro de return', details),
     console.log('dentro de return', actividad),
-    <div>
+    <div className="back_detail">
        <Link to="/home">
         <button className="back">Back</button>
       </Link>

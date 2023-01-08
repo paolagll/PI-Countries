@@ -64,7 +64,7 @@ export default function Filter(){
 
     return (
         
-        <div className="filters">
+        <div className="select">
              {/* order */}
              <select defaultValue={'default'} onChange={e => handleOrder(e)}>
                     <option value="default" disabled>Alphabetic order</option>

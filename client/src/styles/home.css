@@ -46,22 +46,78 @@
   width: 320px;
   height: 320px;
 }
-  
-/* @media (min-width: 700px) {
-  .container {
-    flex-direction: row;
-  }
-}
-  
-@media (min-width: 700px) {
-  .item {
-    width: 50%;
-  }
-} */
 
 .containhome{
-  background-color: #F2CB9B;
+  background-color: #f2cb9b7a;
+  /* background-image: url('../images/copialogo.jpg'); */
+  display: grid;
 }
+
+.container_country{
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: space-around
+}
+
+.container_filters{
+  min-width: 200px;
+}
+
+.button_create{
+color: #fff;
+background-color: #bf7b3f;
+padding: 10px 30px;
+border: solid #693110 1px;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+border-radius: 37px;
+transition : 648ms;
+transform: translateY(0);
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+text-transform: uppercase;
+justify-content: center;
+}
+
+.button_create:hover{
+transition : 648ms;
+padding: 10px 42x;
+transform : translateY(-0px);
+background-color: #fff;
+color: #641400;
+border: solid 1px #641400;
+}
+
+.button_activity{
+  display: flex;
+  justify-content: center;
+}
+
+.reset{
+  background-color:#ebceaa;
+  border-radius:10px;
+  display:inline-block;
+  cursor:pointer;
+  color:#8c4820;
+  font-family:Arial;
+  font-size:14px;
+  padding:4px 12px;
+  text-decoration:none;
+  border: solid #693110 1px;
+  margin: 0px 15px 30px 15px;
+}
+.reset:hover {
+  background-color:#8c4820;
+  color: white;
+}
+.reset:active {
+  position:relative;
+  top:1px;
+}
+
 /*   
 paleta de colores{
 #F2CB9B

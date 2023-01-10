@@ -23,7 +23,6 @@ export default function ActivityCreate(){
     let countryList = countries.map( c => {
         return ({
             name: c.name,
-            img: c.img,
         })
     })
 
@@ -32,27 +31,59 @@ export default function ActivityCreate(){
     },[]);
 
     function validate(input) {
-        let hasErrors = false;
-        let errors = {};
+        // let hasErrors = false;
+        // let errors = {};
       
-        if (input.name.trim() === "") {
-          errors.name = "Activity name required";
-          hasErrors = true;
-        } else if (input.name.length < 3 || input.name.length > 15) {
-          errors.name = "Activity name invalid";
-          hasErrors = true;
-        }
-      
-        errors.duration = input.duration <= 0 || input.duration >= 24 ? "Duration must be in 24 hs format" : "";
-        errors.season = input.season ? "" : "Select a season";
-        errors.countriesName = input.name ? "" : "Select a country";
-        errors.difficulty = input.difficulty ? "" : "Select a difficulty";
+        // if (input.name.trim() === "") {
+        //   errors.name = "Activity name required";
+        // //   hasErrors = true;
+        // } else if (input.name.length < 3 || input.name.length > 15) {
+        //   errors.name = "Activity name invalid";
+        // //   hasErrors = true;
+        // }
 
-        setButtonEnabled(!hasErrors);
-        return errors;
+        // // if (input.countries.length === 0) {
+        // //     errors.countriesName= 'Select a country IF';
+        // //     hasErrors=true;
+        // // }
+      
+        // errors.duration = input.duration <= 0 || input.duration >= 24 ? "Duration must be in 24 hs format" : "";
+        // errors.season = input.season ? "" : "Select a season";
+        // errors.countriesName = input.countries.length !== 0 ? '': 'Select a country';
+        // errors.difficulty = input.difficulty ? "" : "Select a difficulty";
+
+        // return errors;
+
+       
+        let errors = {}
+    
+        if (!input.name) {
+            errors.name = 'Name is required'
+        }
+        else if (!input.duration) {
+          errors.duration = 'Duration is required'
+        }
+        else if ( input.duration > 24 || input.duration < 1 ){
+          errors.duration = 'Duration must be from 1 to 24 hours'
+            }
+        else if (!input.difficulty){
+          errors.difficulty = 'Difficulty is required'
+        }
+        else if (input.difficulty > 5 || input.difficulty < 1){
+                errors.difficulty = 'Difficulty must be from 1 to 5'
+            }
+            else if (!input.season) {
+                errors.season = 'You must select a season'
+            }
+            else if (!input.countries) {
+                errors.countries = 'You must select at least one country'
+            }
+            return errors;
+        
     };
       
     function handleChange(e){
+        setButtonEnabled(true);
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -64,11 +95,15 @@ export default function ActivityCreate(){
     };
 
     function handleCountrySelect(e){
-        if(input.countries.includes(e.target.value)) return alert("Country already select");
-        setInput({
-            ...input,
-            countries: [...input.countries, e.target.value]
-        })
+        setButtonEnabled(true);
+        if(e.target.value !== 'default'){
+            setInput({
+                ...input,
+                countries: [...input.countries, e.target.value]
+            })
+        }
+        // if(input.countries.includes(e.target.value)) return alert("Country already select"); ver desp
+       
         setErrors(validate({
             ...input,
             [e.target.name]: e.target.value
@@ -76,6 +111,7 @@ export default function ActivityCreate(){
     };
 
     function handleSelect(e){
+        setButtonEnabled(true);
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -87,6 +123,7 @@ export default function ActivityCreate(){
     };
 
     const deleteCountry = (e) => {
+        setButtonEnabled(true);
         setInput({
           ...input,
           countries: input.countries.filter(country => country !== e.target.value)
@@ -177,14 +214,14 @@ export default function ActivityCreate(){
                     )}
                     </div>
                     <div className="select_form">
-                        <select defaultValue={'default'} name="NombrePais" onChange={e=>handleCountrySelect(e)}>
+                        <select defaultValue={'default'} name="country name" onChange={e=>handleCountrySelect(e)}>
                             <option value="default" disabled>Select country</option>
-                            {countries.map(c=>(
-                                <option value={c.name}>{c.name}</option>
+                            {countryList?.map(c=>(
+                                <option value={c.name} key={c.name}>{c.name}</option>
                             ))}
                         </select>
-                            {errors.countriesName&&(
-                            <p className="warning">{errors.countriesName}</p>
+                            {errors.countries&&(
+                            <p className="warning">{errors.countries}</p>
                         )}
                     </div>
                     <div className="displayCountries">
@@ -197,7 +234,7 @@ export default function ActivityCreate(){
                     )
                     })}
                     </div>
-                    <button type="submit" className='boton_crear' disabled={!buttonEnabled}>Create</button>
+                    <button type="submit" className='boton_crear' disabled={Object.keys(errors).length !== 0 || !buttonEnabled}>Create</button>
                 </form>
                 </div>  
                 </div>

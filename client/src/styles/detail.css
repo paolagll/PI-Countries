@@ -1,22 +1,111 @@
-.back_detail{
+.details{
     display: flex;
-    justify-content: flex-start;
-    justify-items: stretch;
-    margin: 10px;
+    flex-direction: column;
+    margin: 0;
+    background-color: #F2CB9B;
+    width: 100vw;
+    height: 100vh;
 }
 
-.details{
+.linkback{
+    position: relative;
+    top: 10px;
+    display: inline-block;
+    left: 10px;
+    width: 60px;
+}
+
+.bbackd{
+    background-color: #ebceaa;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: #8c4820;
+    font-family: Arial;
+    font-size: 14px;
+    padding: 4px 12px;
+    text-decoration: none;
+    border: solid #693110 1px;
+}
+
+.bbackd:hover {
+    background-color:#8c4820;
+    color: white;
+}
+.bbackd:active {
+    position:relative;
+    top:1px;
+}
+
+.details_container{
     justify-content: space-around;
     display: flex;
     align-items: center;
 }
 
-/* .card {
-    width: 210px;
-    height: 254px;
-    border-radius: 4px;
-    background: #212121;
-    display: flex;
-    gap: 5px;
-    padding: .4em;
+/* .card-detail {
+  
+    
 } */
+
+.container_activities{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 190px;
+    height: 254px;
+    perspective: 1000px;
+    font-family: sans-serif;
+  }
+  
+  .title {
+    font-size: 1.5em;
+    font-weight: 900;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 1px solid coral;
+    border-radius: 1rem;
+  }
+  
+  .flip-card-front {
+    background: linear-gradient(120deg, bisque 60%, rgb(255, 231, 222) 88%,
+       rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
+    color: coral;
+  }
+  
+  .flip-card-back {
+    background: linear-gradient(120deg, rgb(255, 174, 145) 30%, coral 88%,
+       bisque 40%, rgb(255, 185, 160) 78%);
+    color: white;
+    transform: rotateY(180deg);
+  }

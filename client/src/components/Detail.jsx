@@ -20,14 +20,12 @@ export default function Detail() {
   }, [id]);
 
   return (
-    console.log('dentro de return', details),
-    console.log('dentro de return', actividad),
-    <div className="back_detail">
-       <Link to="/home">
-        <button className="back">Back</button>
+    <div className="details">
+      <Link to="/home" className="linkback">
+        <button className="bbackd">Back</button>
       </Link>
       {details ?  
-        <div className="details">
+        <div className="details_container">
           <div >
             <img src={details.flag} className="img" alt="Bandera del Pais" />
           </div>
@@ -50,17 +48,23 @@ export default function Detail() {
             ) : (
             <div><p>There isn't activities</p></div>
             )}
+        <div className="container_activities">
           {details.Activities?.map(e => (
-              <div>
-                <ul className="card-activities">
-                  <h3>Name: {e.name}</h3>
-                  <h3>Difficulty: {e.difficulty}</h3>
-                  <h3>Duration: {e.duration}</h3>
-                  <h3>Season: {e.season}</h3>
+              <div className="flip-card">
+                <ul className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <h3>{e.name}</h3>
+                  </div>
+                  <div className="flip-card-back">
+                   <h3>Difficulty: {e.difficulty}</h3>
+                    <h3>Duration: {e.duration}</h3>
+                    <h3>Season: {e.season}</h3>
+                  </div>
                 </ul>
               </div>
             ))}
           </div>
-      </div> 
+        </div>
+    </div> 
   )
 }

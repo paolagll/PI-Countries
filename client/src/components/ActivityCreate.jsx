@@ -45,7 +45,7 @@ export default function ActivityCreate(){
       
         errors.duration = input.duration <= 0 || input.duration >= 24 ? "Duration must be in 24 hs format" : "";
         errors.season = input.season ? "" : "Select a season";
-        errors.name = input.name ? "" : "Select a country";
+        errors.countriesName = input.name ? "" : "Select a country";
         errors.difficulty = input.difficulty ? "" : "Select a difficulty";
 
         setButtonEnabled(!hasErrors);
@@ -153,10 +153,11 @@ export default function ActivityCreate(){
                         <label>Duration:</label>
                         <input type="number"
                         name='duration'
-                        className="cajainput"
+                        className="cajainpuths"
                         value={input.duration}
                         onChange={handleChange}
                         />
+                        <p>Hs </p>
                         {errors.duration &&(
                             <p className="warning">{errors.duration}</p>
                         )}
@@ -172,7 +173,7 @@ export default function ActivityCreate(){
                         </select>
                     </div>
                     <div>{errors.season&&(
-                        <p className="warning">{errors.season}</p>
+                        <p className="warning" >{errors.season}</p>
                     )}
                     </div>
                     <div className="select_form">
@@ -196,7 +197,7 @@ export default function ActivityCreate(){
                     )
                     })}
                     </div>
-                    <button className="boton" type="submit" disabled={!buttonEnabled}>Crear</button>
+                    <button type="submit" className='boton_crear' disabled={!buttonEnabled}>Create</button>
                 </form>
                 </div>  
                 </div>

@@ -27,7 +27,7 @@ export default function Detail() {
       {details ?  
         <div className="details_container">
           <div >
-            <img src={details.flag} className="img" alt="Bandera del Pais" />
+            <img src={details.flag} className="detailflag" alt="Country Flag" />
           </div>
           <div className="card-detail">
             <h1>Name: {details.name}</h1>
@@ -44,9 +44,9 @@ export default function Detail() {
      
       <div className="activities-cards">
           {details.Activities && Object.keys(details.Activities).length > 0? (
-              <h2>Activities:</h2>
+              <h2 className="activ">Activities:</h2>
             ) : (
-            <div><p>There isn't activities</p></div>
+            <div className="noactivity"><p>There isn't activities</p></div>
             )}
         <div className="container_activities">
           {details.Activities?.map(e => (

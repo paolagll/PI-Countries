@@ -30,32 +30,8 @@ export default function ActivityCreate(){
         dispatch(getCountries())
     },[]);
 
-    function validate(input) {
-        // let hasErrors = false;
-        // let errors = {};
-      
-        // if (input.name.trim() === "") {
-        //   errors.name = "Activity name required";
-        // //   hasErrors = true;
-        // } else if (input.name.length < 3 || input.name.length > 15) {
-        //   errors.name = "Activity name invalid";
-        // //   hasErrors = true;
-        // }
-
-        // // if (input.countries.length === 0) {
-        // //     errors.countriesName= 'Select a country IF';
-        // //     hasErrors=true;
-        // // }
-      
-        // errors.duration = input.duration <= 0 || input.duration >= 24 ? "Duration must be in 24 hs format" : "";
-        // errors.season = input.season ? "" : "Select a season";
-        // errors.countriesName = input.countries.length !== 0 ? '': 'Select a country';
-        // errors.difficulty = input.difficulty ? "" : "Select a difficulty";
-
-        // return errors;
-
-       
-        let errors = {}
+    function validate(input) {  
+       let errors = {}
     
         if (!input.name) {
             errors.name = 'Name is required'
@@ -214,7 +190,7 @@ export default function ActivityCreate(){
                     )}
                     </div>
                     <div className="select_form">
-                        <select defaultValue={'default'} name="country name" onChange={e=>handleCountrySelect(e)}>
+                        <select defaultValue={'default'} name="countries" onChange={e=>handleCountrySelect(e)}>
                             <option value="default" disabled>Select country</option>
                             {countryList?.map(c=>(
                                 <option value={c.name} key={c.name}>{c.name}</option>

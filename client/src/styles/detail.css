@@ -29,83 +29,119 @@
 }
 
 .bbackd:hover {
-    background-color:#8c4820;
-    color: white;
+  background-color:#8c4820;
+  color: white;
 }
 .bbackd:active {
-    position:relative;
-    top:1px;
+  position:relative;
+  top:1px;
 }
 
 .details_container{
-    justify-content: space-around;
-    display: flex;
-    align-items: center;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
 }
 
-/* .card-detail {
-  
-    
-} */
+.detailflag{
+  border: solid 2px #693110;
+  border-radius: 30px;
+
+}
+.card-detail {
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  margin: 2.5vh 1.45vw;
+  width: 400px;
+  height: 320px;
+  color: #693110;
+  font: initial;
+}
 
 .container_activities{
-    display: flex;
-    justify-content: space-evenly;
-    align-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.activ{
+  color: #8c4820;
+  text-shadow: 0 0 black;
 }
 
 .flip-card {
-    background-color: transparent;
-    width: 190px;
-    height: 254px;
-    perspective: 1000px;
-    font-family: sans-serif;
-  }
+  background-color: transparent;
+  width: 180px;
+  height: 230px;
+  perspective: 1000px;
+  font-family: sans-serif;
+  margin: 0 20px 0 20px;
+}
   
-  .title {
-    font-size: 1.5em;
-    font-weight: 900;
-    text-align: center;
-    margin: 0;
-  }
+.title {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
   
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  padding: 0;
+  margin: 0;
+}
   
-  .flip-card:hover .flip-card-inner {
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+  
+.flip-card-front, .flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid #641400;
+  border-radius: 1rem;
+}
+  
+.flip-card-front {
+    background: linear-gradient(120deg, #F2CB9B 60%, rgba( 255, 255, 255, 0.3 ) 88%,
+       #F2CB9B 40%,);
+    color: #8C4820;
+}
+  
+.flip-card-back {
+    background: linear-gradient(120deg, #F2CB9B 30%, rgba( 255, 255, 255, 0.3 ) 88%,
+       bisque 40%,);
+    color: #8C4820;
     transform: rotateY(180deg);
-  }
-  
-  .flip-card-front, .flip-card-back {
-    box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid coral;
-    border-radius: 1rem;
-  }
-  
-  .flip-card-front {
-    background: linear-gradient(120deg, bisque 60%, rgb(255, 231, 222) 88%,
-       rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
-    color: coral;
-  }
-  
-  .flip-card-back {
-    background: linear-gradient(120deg, rgb(255, 174, 145) 30%, coral 88%,
-       bisque 40%, rgb(255, 185, 160) 78%);
-    color: white;
-    transform: rotateY(180deg);
-  }
+}
+
+.activities-cards{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  flex-direction: row;
+}
+
+.noactivity{
+  border: solid #8c4820 2px;
+  color: #693110;
+  margin: 0;
+  width: 200px;
+  border-radius: 20px;
+}

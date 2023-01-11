@@ -74,7 +74,7 @@ export default function Home (){
                     key = {c.id}
                     id = {c.id}
                 /> </Link></div>  )})
-                : <p>Loading...</p>
+                : <div><span class="loader"></span> <p>Loading</p> </div>
                 }
                 </div>
             </div>

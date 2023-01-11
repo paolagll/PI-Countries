@@ -139,3 +139,35 @@
 .warning{
     color: #641400;
 }
+
+.displayCountries{
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    justify-content: center;
+}
+
+.countryDiv{
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 8px;
+    border: 1px solid #BF7B3F;
+    border-radius: 15px;
+}
+
+.countryName{
+    margin: 0 8px;
+}
+
+.closeButton{
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+

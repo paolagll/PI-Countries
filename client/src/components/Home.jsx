@@ -53,9 +53,9 @@ export default function Home (){
                 
                 <div className="container_filters">
                     <Filter/>
-                    <button className="reset" onClick={e=> {handleClick(e)}}>
+                    {/* <button className="reset" onClick={e=> {handleClick(e)}}>
                         Reset
-                    </button>
+                    </button> */}
                     <Link to= '/activities' className="button_activity">
                         <button  className="button_create">Create Activity</button> 
                     </Link>

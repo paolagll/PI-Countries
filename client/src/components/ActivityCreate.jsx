@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { Link, useHistory } from "react-router-dom";
 import {postActivities, getCountries} from '../actions/index';
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,10 @@ export default function ActivityCreate(){
         season:'',
         countries:[],
     });
+
+    const refCountry = useRef()
+    const refSeason = useRef()
+    const refDifficulty = useRef()
 
     let countryList = countries.map( c => {
         return ({
@@ -72,14 +76,15 @@ export default function ActivityCreate(){
 
     function handleCountrySelect(e){
         setButtonEnabled(true);
-        if(e.target.value !== 'default'){
+        if(e.target.value !== 'default' ){
+            if(input.countries.includes(e.target.value)){
+                return alert('Country already select')
+            }
             setInput({
                 ...input,
                 countries: [...input.countries, e.target.value]
             })
         }
-        // if(input.countries.includes(e.target.value)) return alert("Country already select"); ver desp
-       
         setErrors(validate({
             ...input,
             [e.target.name]: e.target.value
@@ -124,7 +129,10 @@ export default function ActivityCreate(){
             season:'',
             countries:[]
         })
-        history.push('/home')
+        refCountry.current.selectedIndex = 0;
+        refSeason.current.selectedIndex = 0;
+        refDifficulty.current.selectedIndex = 0;
+        // history.push('/home')
     };
 
     return (
@@ -148,7 +156,7 @@ export default function ActivityCreate(){
                     </div>
                     <div className="select_form">
                         {/* <label>Diffilculty:</label> */}
-                        <select defaultValue={'default'} name='difficulty' onChange={e=> handleSelect(e)}>
+                        <select defaultValue={'default'} name='difficulty' ref={refDifficulty} onChange={e=> handleSelect(e)}>
                             <option value="default" disabled>Diffilculty</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -177,7 +185,7 @@ export default function ActivityCreate(){
                     </div>
                     <div className="select_form">
                         {/* <label>Season:</label> */}
-                        <select defaultValue={'default'} name="season" onChange={e=>handleSelect(e)}>
+                        <select defaultValue={'default'} name="season" ref={refSeason} onChange={e=>handleSelect(e)}>
                             <option value="default" disabled>Season</option>
                             <option value="summer">Summer</option>
                             <option value="winter">Winter</option>
@@ -190,7 +198,7 @@ export default function ActivityCreate(){
                     )}
                     </div>
                     <div className="select_form">
-                        <select defaultValue={'default'} name="countries" onChange={e=>handleCountrySelect(e)}>
+                        <select defaultValue={'default'} name="countries" ref={refCountry} onChange={e=>handleCountrySelect(e)}>
                             <option value="default" disabled>Select country</option>
                             {countryList?.map(c=>(
                                 <option value={c.name} key={c.name}>{c.name}</option>

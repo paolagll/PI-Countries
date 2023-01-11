@@ -6,11 +6,11 @@
     flex-wrap: wrap;
 }
 .select {
-    margin: 15px 8px;
-    height: 200px;
+    margin: 20px 8px 40px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
 }    .select select {
         display: flex;
         width: 100%;
@@ -25,6 +25,7 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         font-size: 18px;
+        margin: 5px
     }
         .select select::-ms-expand {
             display: none;
@@ -57,4 +58,26 @@
 }
 .select select:disabled ~ .select_arrow {
     border-top-color: #cccccc;
+}
+
+.reset{
+    background-color:#ebceaa;
+    border-radius:10px;
+    display:inline-block;
+    cursor:pointer;
+    color:#8c4820;
+    font-family:Arial;
+    font-size:14px;
+    padding:4px 12px;
+    text-decoration:none;
+    border: solid #693110 1px;
+    width: 68px;
+}
+.reset:hover {
+    background-color:#8c4820;
+    color: white;
+}
+.reset:active {
+    position:relative;
+    top:1px;
 }

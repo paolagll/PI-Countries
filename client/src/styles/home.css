@@ -51,6 +51,7 @@
   background-color: #f2cb9b7a;
   /* background-image: url('../images/copialogo.jpg'); */
   display: grid;
+  min-height: 100vh;
 }
 
 .container_country{
